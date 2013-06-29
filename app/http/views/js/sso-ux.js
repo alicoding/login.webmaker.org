@@ -6,7 +6,7 @@
   // make sure jQuery is available to us
   if(!$) {
     var jq = document.createElement("script");
-    jq.src = "{{ hostname }}/javascript/ext/jquery-1.9.1.min.js";
+    jq.src = "{{ hostname }}/js/ext/jquery-1.9.1.min.js";
     jq.onload = function() {
       // retry, this time in the knowledge that we have jQuery
       setupUIHandler(window, document, window.jQuery);

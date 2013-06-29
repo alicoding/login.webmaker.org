@@ -55,7 +55,7 @@ exports.console = function( req, res ){
 exports.js = function( filename ) {
   return function( req, res ){
     res.set('Content-Type', 'application/javascript');
-    res.render( 'javascript/' + filename + '.js', {
+    res.render( 'js/' + filename + '.js', {
       hostname: env.get( "HOSTNAME" ),
       audience: env.get( "AUDIENCE" )
     });

@@ -64,9 +64,6 @@ http.configure(function(){
     optimization: optimize ? 0 : 2
   }));
 
-  http.use(express.static(tmpDir));
-  http.use(express.static( path.join(__dirname, 'public')));
-
   // Setup locales with i18n
   http.use( i18n.abide({
     supported_languages: [
@@ -81,6 +78,9 @@ http.configure(function(){
     console.log( "Using locale: %s", req.lang);
     next();
   });
+
+  http.use(express.static(tmpDir));
+  http.use(express.static( path.join(__dirname, 'public')));
 
   http.use(http.router);
 

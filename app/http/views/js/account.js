@@ -1,5 +1,5 @@
  requirejs.config({
-    baseUrl: './javascript',
+    baseUrl: './js',
     paths: {
       'jquery': 'ext/jquery-1.9.1.min',
       'persona-sso': '{{ audience }}/sso/include'
