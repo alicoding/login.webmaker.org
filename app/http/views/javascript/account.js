@@ -1,5 +1,5 @@
  requirejs.config({
-    baseUrl: './js',
+    baseUrl: './javascript',
     paths: {
       'jquery': 'ext/jquery-1.9.1.min',
       'persona-sso': '{{ audience }}/sso/include'
@@ -11,6 +11,7 @@
   });
   require(['jquery', 'persona-sso', 'sso-ux'], function ($) {
     var personaEmail;
+    $("#wrong-email").hide();
 
     // CRSF Protection
     var csrf_token = $("meta[name='X-CSRF-Token']").attr("content");
@@ -22,6 +23,7 @@
     
     navigator.idSSO.app.onlogin = function( email, username, data ) {
       personaEmail = email;
+      $("#wrong-email").hide();
       $("#logout-message").hide();
       $(".wm-user-panel" ).fadeIn();
       $(".wm-email").text( email );
@@ -42,7 +44,7 @@
         $.post( "/account/delete", function( data ) {
           if ( !data.error ) {
             $(".wm-user-panel" ).fadeOut();
-            $("#logout-message").fadeIn().text("Your user account was deleted!");
+            $("#logout-message").fadeIn();
             navigator.idSSO.logout();
             setTimeout(function() { 
               window.location.href = $("a")[0].href; 
@@ -50,7 +52,10 @@
           }
         });
       } else {
-        alert( "Looks like that isn't your email :(" );
+        $("#wrong-email").fadeIn();
+        setTimeout(function() { 
+          $("#wrong-email" ).fadeOut(); 
+          }, 3000);        
       }
     });
 

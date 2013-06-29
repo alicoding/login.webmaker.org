@@ -13,8 +13,9 @@ var express     = require('express'),
     application = require('./controllers/application'),
     env         = require('../../config/environment'),
     helmet      = require('helmet'),
+    i18n        = require( '../../lib/i18n'),
     mongo       = require('../../lib/mongoose')(env),
-    nunjucks    = require( "nunjucks" ),
+    nunjucks    = require('nunjucks'),
     userHandle  = require('../models/user')(mongo.conn),
     persona     = require("express-persona"),
     lessMiddleWare = require('less-middleware'),
@@ -37,7 +38,7 @@ http.configure(function(){
     http.use(helmet.hsts());
     http.enable('trust proxy');
   }
-  http.use(express.static( path.join(__dirname, 'public')));
+
   http.use(express.cookieParser());
   http.use(express.bodyParser());
   http.use(express.methodOverride());
@@ -50,7 +51,6 @@ http.configure(function(){
     },
     proxy: true
   }));
-  http.use(http.router);
 
   var optimize = env.get("NODE_ENV") !== "development",
       tmpDir = path.join(require( "os" ).tmpDir(), "mozilla.login.webmaker.org.build");
@@ -63,7 +63,29 @@ http.configure(function(){
     yuicompress: optimize,
     optimization: optimize ? 0 : 2
   }));
+
+
   http.use(express.static(tmpDir));
+  http.use(express.static( path.join(__dirname, 'public')));
+
+// Setup locales with i18n
+http.use( i18n.abide({
+  supported_languages: [
+    'en_US', 'th_TH'
+  ],
+  default_lang: "en_US",
+  translation_directory: "locale",
+  localeOnUrl: true
+}));
+// Dump locale info to console
+http.use( function( req, res, next ) {
+  console.log( "Using locale: %s", req.lang);
+  next();
+});
+
+  http.use(http.router);
+
+
 });
 
 persona(http, {
