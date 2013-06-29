@@ -64,27 +64,25 @@ http.configure(function(){
     optimization: optimize ? 0 : 2
   }));
 
-
   http.use(express.static(tmpDir));
   http.use(express.static( path.join(__dirname, 'public')));
 
-// Setup locales with i18n
-http.use( i18n.abide({
-  supported_languages: [
-    'en_US', 'th_TH'
-  ],
-  default_lang: "en_US",
-  translation_directory: "locale",
-  localeOnUrl: true
-}));
-// Dump locale info to console
-http.use( function( req, res, next ) {
-  console.log( "Using locale: %s", req.lang);
-  next();
-});
+  // Setup locales with i18n
+  http.use( i18n.abide({
+    supported_languages: [
+      'en_US', 'th_TH'
+    ],
+    default_lang: "en_US",
+    translation_directory: "locale",
+    localeOnUrl: true
+  }));
+  // Dump locale info to console
+  http.use( function( req, res, next ) {
+    console.log( "Using locale: %s", req.lang);
+    next();
+  });
 
   http.use(http.router);
-
 
 });
 

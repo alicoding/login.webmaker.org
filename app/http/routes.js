@@ -107,7 +107,7 @@ module.exports = function( http, userHandle ){
   http.get('/javascript/sso-ux.js', routes.site.js('sso-ux'));
   http.get('/javascript/console.js', routes.site.js('console'));
   http.get('/javascript/account.js', routes.site.js('account'));
-  http.get('/javascript/ext/jquery-1.9.1.min.js', routes.site.js('ext/jquery-1.9.1.min'))
+  http.get('/javascript/ext/jquery-1.9.1.min.js', routes.site.js('ext/jquery-1.9.1.min'));
   http.get('/ajax/forms/new_user.html', routes.user.userForm);
 
   // LoginAPI
