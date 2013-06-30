@@ -55,8 +55,6 @@ http.configure(function(){
   });
 
   http.use(express.static( path.join(__dirname, 'public')));
-
-
   http.use(express.cookieParser());
   http.use(express.bodyParser());
   http.use(express.methodOverride());
