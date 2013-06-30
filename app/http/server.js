@@ -38,32 +38,7 @@ http.configure(function(){
     http.use(helmet.hsts());
     http.enable('trust proxy');
   }
-
-  http.use(express.cookieParser());
-  http.use(express.bodyParser());
-  http.use(express.methodOverride());
-  http.use(express.cookieSession({
-    key: "login.sid",
-    secret: env.get('SESSION_SECRET'),
-    cookie: {
-      secure: !!env.get('FORCE_SSL'),
-      maxAge: 2678400000 // 31 days
-    },
-    proxy: true
-  }));
-
-  var optimize = env.get("NODE_ENV") !== "development",
-      tmpDir = path.join(require( "os" ).tmpDir(), "mozilla.login.webmaker.org.build");
-  http.use(lessMiddleWare({
-    once: optimize,
-    debug: !optimize,
-    dest: tmpDir,
-    src: path.resolve(__dirname, "public"),
-    compress: optimize,
-    yuicompress: optimize,
-    optimization: optimize ? 0 : 2
-  }));
-
+  
   // Setup locales with i18n
   http.use( i18n.abide({
     supported_languages: [
@@ -79,10 +54,36 @@ http.configure(function(){
     next();
   });
 
-  http.use(express.static(tmpDir));
   http.use(express.static( path.join(__dirname, 'public')));
 
+
+  http.use(express.cookieParser());
+  http.use(express.bodyParser());
+  http.use(express.methodOverride());
+  http.use(express.cookieSession({
+    key: "login.sid",
+    secret: env.get('SESSION_SECRET'),
+    cookie: {
+      secure: !!env.get('FORCE_SSL'),
+      maxAge: 2678400000 // 31 days
+    },
+    proxy: true
+  }));
   http.use(http.router);
+
+  var optimize = env.get("NODE_ENV") !== "development",
+      tmpDir = path.join(require( "os" ).tmpDir(), "mozilla.login.webmaker.org.build");
+  http.use(lessMiddleWare({
+    once: optimize,
+    debug: !optimize,
+    dest: tmpDir,
+    src: path.resolve(__dirname, "public"),
+    compress: optimize,
+    yuicompress: optimize,
+    optimization: optimize ? 0 : 2
+  }));
+
+  http.use(express.static(tmpDir));
 
 });
 
