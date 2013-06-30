@@ -82,9 +82,7 @@ http.configure(function(){
     yuicompress: optimize,
     optimization: optimize ? 0 : 2
   }));
-
   http.use(express.static(tmpDir));
-
 });
 
 persona(http, {
