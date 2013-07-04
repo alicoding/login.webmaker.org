@@ -13,7 +13,7 @@ var express     = require('express'),
     application = require('./controllers/application'),
     env         = require('../../config/environment'),
     helmet      = require('helmet'),
-    i18n        = require( '../../lib/i18n'),
+    i18n        = require( 'i18n-abide'),
     mongo       = require('../../lib/mongoose')(env),
     nunjucks    = require('nunjucks'),
     userHandle  = require('../models/user')(mongo.conn),
@@ -40,14 +40,15 @@ http.configure(function(){
   }
   
   // Setup locales with i18n
-  http.use( i18n.abide({
-    supported_languages: [
-      'en_US', 'th_TH'
-    ],
-    default_lang: "en_US",
-    translation_directory: "locale",
-    localeOnUrl: true
-  }));
+http.use( i18n.abide({
+  supported_languages: [
+    'en-US', 'th-TH'
+  ],
+  default_lang: "en_US",
+  translation_type: "plist",
+  translation_directory: "locale",
+  locale_on_url: true
+}));
   // Dump locale info to console
   http.use( function( req, res, next ) {
     console.log( "Using locale: %s", req.lang);

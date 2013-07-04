@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Hi</key>
+    <string>Hi</string>
+    <key>Username</key>
+    <string>Username</string>
+    <key>Email</key>
+    <string>Email</string>
+    <key>Delete account</key>
+    <string>Delete account?</string>
+    <key>Are you sure you want to leave</key>
+    <string>Are you sure you want to leave?</string>
+    <key>Enter your email to confirm</key>
+    <string>Enter your email to confirm:</string>
+    <key>Delete me forever</key>
+    <string>Delete me forever</string>
+    <key>Your user account was deleted</key>
+    <string>Your user account was deleted!</string>
+    <key>Looks like that isnt your email</key>
+    <string>Looks like that isn't your email :(</string>                
+  </dict>
+</plist>

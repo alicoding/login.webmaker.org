@@ -9,7 +9,6 @@
   },
   "dependencies": {
     "badword": "0.0.1",
-    "commander": "1.1.1",
     "express-persona": "0.0.9",
     "express": "3.2.5",
     "gobbledygook": "0.0.3",
@@ -17,15 +16,14 @@
     "helmet": "0.0.9",
     "less-middleware": "0.1.12",
     "MD5": "1.0.3",
-    "mkpath": "0.1.0",
     "mongoose": "3.6.11",
     "mongoose-validator": "0.2.1",
     "newrelic": "0.9.20",
     "node-statsd": "0.0.7",
-    "nunjucks": "0.1.8a",
-    "plist": "0.4.3",
+    "nunjucks": "0.1.9",
     "winston": "0.7.1",
-    "webmaker-loginapi": "0.1.6"
+    "webmaker-loginapi": "0.1.7",
+    "i18n-abide": "git://github.com/humphd/i18n-abide.git#fc932caa42a4cfa88161dfe1a27e88085e85e3bd"
   },
   "devDependencies": {
     "grunt": "0.4.1",
