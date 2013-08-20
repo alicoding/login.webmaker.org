@@ -41,7 +41,7 @@ http.configure(function(){
   // Setup locales with i18n
   http.use( i18n.abide({
     supported_languages: [
-      "en-US"
+      "en-US", "th-TH"
     ],
     default_lang: "en_US",
     translation_type: "key-value-json",

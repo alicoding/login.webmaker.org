@@ -1,0 +1,11 @@
+  {
+    "Hi": "สวัสดี",
+    "Username": "ชื่อผู้ใช้",
+    "Email": "อีเมล์",
+    "Delete account?": "ลบบัญชีหรือไม่",
+    "Are you sure you want to leave?": "คุณแน่ใจหรือว่าต้องการออก?",
+    "Enter your email to confirm:": "ใส่อีเมลของคุณเพื่อยืนยัน:",
+    "Delete me forever": "ลบฉันตลอดไป",
+    "Your user account was deleted!": "บัญชีผู้ใช้ของคุณถูกลบ!",
+    "Looks like that isnt your email": "ดูเหมือนว่าที่ไม่ได้เป็นอีเมลของคุณ"
+  }
